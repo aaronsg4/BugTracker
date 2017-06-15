@@ -1,0 +1,396 @@
+﻿
+
+
+@model BugTracker.Models.UsersRolesViewModel
+<div>
+    <ul class="nav navbar-nav navbar-left">
+
+        <!-- Sidebar Menu Trigger -->
+
+        <li class="menu-icon">
+            <a class="side-menu-trigger" href="#">
+                <ul class="bar-icon-wrapper">
+                    <li class="bar-icon"></li>
+                    <li class="bar-icon"></li>
+                    <li class="bar-icon"></li>
+
+                </ul>
+            </a>
+        </li><!-- End of Sidebar Menu Trigger -->
+        <!-- Account Dropdown -->
+
+        <li class="nav-account dropdown">
+            <a href="#"><img alt="img" class="profile-picture" src="~/images/team/man-test-2.jpg" /></a>
+            <ul class="dropdown-menu">
+                <li>
+                    @*<div class="profile-details">
+                        <p class="name">Jason Smith</p>
+                        <p class="designation">Managing Director</p>
+                    </div>*@
+                </li>
+                <li><a href="#">Profile</a></li>
+                @*<li><a href="#">Inbox<span class="menu-badge bg-yellow">8</span></a></li>
+                <li><hr /></li>
+                <li><a href="#">Lock</a></li>*@
+            </ul>
+        </li><!-- End of Account Dropdown -->
+        <!-- Messages Dropdown -->
+
+        @*<li class="nav-messages dropdown">
+            <a href="#"><i class="pe-7s-mail"></i><span class="menu-badge bg-purple">8</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-heading"><span class="number">8 pending</span> notifications <a href="#">View All</a></li>
+                <li>
+                    <div class="slim-scroll-dropdown-content">
+                        <div class="slim-scroll-div">
+                            <ul class="inner-dropdown-content">
+                                <li>
+                                    <a>
+                                        <div class="media">
+                                            <div class="media-left friend-online">
+                                                <img alt="img" class="media-object" src="~/images/team/woman-test.jpg">
+                                                <i></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">Jane Doe</h5>
+                                                <p>Nibh auctor nibh congue nibh. auctor nibh auctor nibh... </p>
+                                            </div>
+                                        </div>
+                                        <span class="time-badge">Just now</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <div class="media">
+                                            <div class="media-left friend-online">
+                                                <img alt="img" class="media-object" src="~/images/team/man-test.jpg">
+                                                <i></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">James Doe</h5>
+                                                <p>Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </p>
+                                            </div>
+                                        </div>
+                                        <span class="time-badge">7 min ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <div class="media">
+                                            <div class="media-left friend-online">
+                                                <img alt="img" class="media-object" src="~/images/team/man-test-2.jpg">
+                                                <i></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">Jack Doe</h5>
+                                                <p>Sed congue nibh auctor nibh congue nibh congue nibh... </p>
+                                            </div>
+                                        </div>
+                                        <span class="time-badge">12 hours ago</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <div class="media">
+                                            <div class="media-left friend-online">
+                                                <img alt="img" class="media-object" src="~/images/team/2-square.jpg">
+                                                <i></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">June Doe</h5>
+                                                <p>Congue nibh auctor nibh congue nibh auctor nibh... </p>
+                                            </div>
+                                        </div>
+                                        <span class="time-badge">1 day ago</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li> End of Messages Dropdown*@ 
+        <!-- Notification Dropdown -->
+
+        @*<li class="nav-notify dropdown">
+            <a href="#"><i class="pe-7s-bell"></i><span class="menu-badge bg-blue">10</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-heading"><span class="number">8 pending</span> notifications <a href="#">View All</a></li>
+                <li>
+                    <div class="slim-scroll-dropdown-content">
+                        <div class="slim-scroll-div">
+                            <ul class="inner-dropdown-content">
+                                <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
+                                <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li> End of Notification Dropdown*@ 
+        <!-- Task Dropdown -->
+
+        @*<li class="nav-task dropdown">
+            <a href="#"><i class="pe-7s-note2"></i><span class="menu-badge bg-green">3</span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-heading">You have <span class="number">5 pending</span> tasks <a href="#">View All</a></li>
+                <li>
+                    <div class="slim-scroll-dropdown-content">
+                        <div class="slim-scroll-div">
+                            <ul class="inner-dropdown-content">
+                                <li><a href="#">Database migration</a></li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Application deployment</span><span class="task-badge">98%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 98%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Mobile app release</span><span class="task-badge">10%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-red" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Web server upgrade</span><span class="task-badge">25%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">New UI release</span><span class="task-badge">40%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Application deployment</span><span class="task-badge">98%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 98%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Mobile app release</span><span class="task-badge">10%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-red" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">Web server upgrade</span><span class="task-badge">25%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-yellow" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="task-progress-text">New UI release</span><span class="task-badge">40%</span>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li style="color:white">
+                                    @Html.DisplayFor(model => model.User.FirstName)
+                                        @{
+                                            var user = Model.User.FirstName;
+                                            var roleTest = Model.Roles;
+                                        }
+
+                                    <p>
+                                        @if (Model.User.FirstName != null)
+                                        {
+                                            <span>Hello &nbsp; @Model.User.FirstName &nbsp; @Model.User.LastName,&nbsp;</span>
+                                            foreach (var role in Model.Roles)
+                                            {
+                                                if (role == "Submitter")
+                                                {
+                                                    <span> </span>
+                                                }
+                                                else
+                                                {
+                                                    @role<span>&nbsp; / &nbsp;</span>
+                                                }
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            foreach (var role in Model.Roles)
+                                            {
+                                                <span>Hello &nbsp; @role<span>&nbsp; / &nbsp;</span></span>
+
+
+                                            }
+                                        }
+
+                                        &nbsp; &nbsp; <span> <a href="@Url.Action("Index","Home")">Home</a></span>
+                                    </p>
+                                    @if (Request.IsAuthenticated)
+
+
+
+                                    {
+
+                                    var user = Model.User.Id;
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm"}))
+
+                                    {
+                                    @Html.AntiForgeryToken()
+                                    {
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                                    }
+                                    }
+
+                                    }
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li> End of Task Dropdown*@ 
+        <li style="color:white">
+            @if (Model.User.FirstName != null)
+            {
+                <span>Hello @Model.User.FirstName @Model.User.LastName&nbsp; - </span>
+                foreach (var role in Model.Roles)
+                {
+                    if (role == "Submitter")
+                    {
+                        <span></span>
+                    }
+                    else
+                    {
+                       
+                        @role<span>&nbsp;  &nbsp;</span>
+                    }
+
+                }
+            }
+            else
+            {
+                foreach (var role in Model.Roles)
+                {
+                    <span>
+                        Hello &nbsp;
+                        @if (role == "Submitter")
+                        {
+                            <span></span>
+                        }
+                        else
+                        {
+
+                            @role
+                        }
+                        &nbsp;&nbsp;
+                    </span>
+
+
+                }
+            }
+
+            @if (Request.IsAuthenticated)
+
+
+
+            {
+
+                var user = Model.User.Id;
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+
+                    @Html.AntiForgeryToken()
+
+                    <span style="color:white"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></span>
+                }
+            }
+        </li>
+
+
+
+    </ul><!-- End of Left Aligned Icons -->
+    <!-- Right Aligned Icons -->
+
+    @*<ul class="nav navbar-nav navbar-right">
+
+        <!-- Search Icon -->
+
+        <li class="nav-search">
+            <a href="#" class="search-box search-box-trigger"><i class="search-icon pe-7s-search"></i><i class="search-close pe-7s-close"></i></a>
+        </li><!-- End of Search Icon -->
+        <!-- Chat/Settings Trigger -->
+
+        <li class="nav-chat">
+            <a href="#" class="chat-trigger"><div class="notification-dot"><span class="pulse"></span><span class="point"></span></div><i class="pe-7s-comment"></i></a>
+        </li><!-- End of Chat/Settings Trigger -->
+        <!-- Logout Button -->
+
+        <li>
+            <a href="~/lock-screen-1.html"><i class="logout-icon pe-7s-power"></i></a>
+        </li><!-- End of Logout Button -->
+    </ul><!-- End of Right Aligned Icons -->*@
+</div>
+@*<div class="section-admin container-fluid" style="padding-left:330px">
+    <div class="row admin text-center">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="admin-content bg-blue text-light text-left">
+                        <span class="counter-icon counter-icon-big icon_ribbon color-dark-blue"></span>
+                        <span class="counter-extend"></span><span class="counter">
+
+                            @ViewBag.projectcount
+                        </span>
+                        <h3>Open Projects</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="admin-content bg-dark-blue text-light text-left">
+                        <span class="counter-icon counter-icon-big icon_tags"></span>
+                        <span class="counter">@ViewBag.ticketcount</span>
+                        <h3>Open Tickets!</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="admin-content bg-purple text-light text-left">
+                        <span class="counter-icon counter-icon-big icon_cart"></span>
+                        <span class="counter">@ViewBag.urgetticketcount</span>
+                        <h3>Urgent Tickets</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="admin-content bg-dark-green text-light text-left">
+                        <span class="counter-icon counter-icon-big icon_chat color-green"></span>
+                        <span class="counter">80</span>
+                        <h3>New Feedback</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+

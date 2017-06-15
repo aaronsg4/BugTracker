@@ -1,0 +1,199 @@
+﻿@model IEnumerable<BugTracker.Models.Project>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/third-party/datatables/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/third-party/datatables/media/css/dataTables.bootstrap.min.css">
+</head>
+
+<body>
+    <section class="page-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 header-inline">
+                    <div class="header-inline-content">
+                        @*<h2 class="page-title">Data Tables</h2>*@
+                    </div>
+                    <div class="header-inline-content">
+                        <ul class="breadcrumb">
+                            @*<li><a href="~/index.html">Home</a></li>
+                            <li class="active">Tables</li>*@
+                            <li class="button"><a href="@Url.Action("Landing","Home")" class="btn btn-dark-blue">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End of Page Header -->
+    <!-- Flot Basic -->
+    <div class="row">
+        <div class="col-sm-offset-2">
+
+            <div class="admin-content">
+
+                <h2 style="font-variant:small-caps">Your Current Projects</h2><br /><br />
+                @if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+            {
+                    <h3><b> Below you will find a list of all Projects to which you are assigned. </b></h3><br /><hr />
+
+
+
+                }
+
+
+                @if (User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1"))
+            {
+                    <h3><b> Below you will find a list of Projects and Tickets that you are assigned to.  </b></h3><br />
+                }
+
+                <a href="@Url.Action("Index", "Projects")" class="btn btn-dark-blue">Back to Index</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-2">
+    <div class="section-admin container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="admin-content">
+                    <div class="table-responsive">
+                        
+   @foreach (var project in Model)
+   {
+
+       ProjectAssignHelper x = new ProjectAssignHelper();
+       int projectId = project.Id;
+
+       var users = x.ListUsersOnAProject(projectId);
+    <div class="row well">
+        <div class="col-md-8 padding" style="padding-top:40px">
+            <h2>@Html.DisplayFor(modelItem => project.Name)</h2>
+
+            @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+            {
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = project.Id })
+                </p>
+            }
+
+        </div>
+        <div class="col-md-4">
+            <h4>
+                Project Assigned To:
+
+
+
+            </h4><br />
+            <h5>
+                @foreach (var username in users)
+                {
+
+
+                    @username.FirstName <span></span> @username.LastName<span>&nbsp; ||&nbsp;</span>
+
+
+
+                }
+
+            </h5>
+            @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+            {
+                <a href="@Url.Action("ProjectAssign", "Projects", new { id = project.Id })" class="btn btn-dark-blue">Assign Project to Users</a> }
+
+
+
+        </div>
+    </div>
+    <hr />
+    <br /><br /><br />
+    <p>Ticket Table for: @Html.DisplayFor(modelItem => project.Name)</p>
+                            <table id="example1" class="table table-theme table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Ticket Priority</th>
+                                        <th>Ticket Name</th>
+                                        <th>Ticket Description</th>
+                                        <th>Ticket Status</th>
+                                        <th>Created Date</th>
+                                        <th>Ticket Assigned To</th>
+                                        <th>Ticket Attachments</th>
+                                        <th>Functions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var ticketdescription in project.Tickets)
+                                    {
+
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)</td>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.Title)</td>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.Description)</td>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.TicketStatus.Name)</td>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.CreatedDate)</td>
+                                            <td>@Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.FirstName) &nbsp; @Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.LastName)</td>
+                                           <td> @foreach (var attachment in ticketdescription.TicketAttachments)
+                                            {
+                                            <a href="@Url.Action("Details", "TicketAttachments", new { id = attachment.Id })"><span class="icon-paperclip">&nbsp; &nbsp;</span></a>}</td>
+                                            
+                                            <td>@Html.ActionLink("Assign Project", "ProjectAssign", new { id = project.Id })</td>
+
+
+                                        </tr>
+
+
+                                    }
+
+
+
+                                </tbody>
+
+                            </table>
+                            <br /><br /><br /><br /><hr />
+                }
+            </div>
+        </div>
+                </div>
+            </div>
+                </div>
+        </div>
+    </div><!-- End of Page Content -->
+    <!-- Footer -->
+
+
+    @section scripts {
+        <script src="~/third-party/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/third-party/datatables/media/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Export functionality -->
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <!-- End of Export functionality -->
+
+        <script>
+            //$('#example1').DataTable();
+            //$('#example2').DataTable({
+                //$('.table').DataTable();
+                    $('.table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        </script>
+    }
+</body>
+
+</html>

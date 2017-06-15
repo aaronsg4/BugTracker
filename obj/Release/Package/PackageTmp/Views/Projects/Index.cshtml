@@ -1,0 +1,481 @@
+﻿@model IEnumerable<BugTracker.Models.Project>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/third-party/datatables/media/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/third-party/datatables/media/css/dataTables.bootstrap.min.css">
+</head>
+
+<body>
+    <section class="page-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 header-inline">
+                    <div class="header-inline-content">
+                        @*<h2 class="page-title">Data Tables</h2>*@
+                    </div>
+                    <div class="header-inline-content">
+                        <ul class="breadcrumb">
+                            @*<li><a href="~/index.html">Home</a></li>
+                            <li class="active">Tables</li>*@
+                            <li class="button"><a href="@Url.Action("Landing","Home")" class="btn btn-dark-blue">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- End of Page Header -->
+    
+    <div class="section-admin container-fluid">
+        <div class="row admin text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="admin-content bg-blue text-light text-left">
+                            <span class="counter-icon counter-icon-big icon_ribbon color-dark-blue"></span>
+                            <span class="counter-extend"></span><span class="counter">
+                               
+                                @ViewBag.projectcount
+                            </span> PROJECTS
+                            <h3>
+                                Open Projects
+                                @ViewBag.message
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="admin-content bg-dark-blue text-light text-left">
+                            <span class="counter-icon counter-icon-big icon_tags"></span>
+                            <span class="counter">@ViewBag.ticketcount</span> TICKETS
+                            <h3>
+                                Open Tickets
+                                @ViewBag.ticketmessage
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="admin-content bg-purple text-light text-left">
+                            <span class="counter-icon counter-icon-big icon_cart"></span>
+                            <span class="counter">@ViewBag.urgentticketcount </span> URGENT
+                            <h3>
+                                Urgent Tickets
+                                @ViewBag.urgentmessage
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="admin-content bg-dark-green text-light text-left">
+                            <span class="counter-icon counter-icon-big icon_chat color-green"></span>
+                            <span class="counter">@ViewBag.unassignedticketcount</span> UNASSIGNED TICKETS
+                            <h3>@ViewBag.unassignedmessage</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Flot Basic -->
+    <div class="admin-content">
+        <div class="row">
+        <div class="col-sm-2"></div>
+            <div>
+                <h2 style="font-variant:small-caps">Current Projects for @ViewBag.User.</h2><br /><br />
+                <div class="col-sm-offset-2">
+                    @if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                    {
+                        <h3>Below you will find a list of <u>All Projects</u> and Tickets within each corresponding project.  To view only the Projects you are assigned to, click My Projects</h3><br /><hr />
+
+
+                        <a href="@Url.Action("MyProjects", "Projects")" class="btn btn-dark-blue" id="btn">My Projects</a>
+                    }
+
+
+                    else if (User.IsInRole("Developer1") || User.IsInRole("Developer2") || User.IsInRole("Developer3") || User.IsInRole("Developer4") || User.IsInRole("Submitter"))
+                    {
+                        <h3> Below you will find a list of Projects that you are assigned to.  The associated tickets for these projects are listed accordingly.</h3><br />
+                    }
+                </div>
+            </div>
+    </div>
+
+        </div>
+
+
+    <div class="section-admin container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-10">
+
+                <div class="admin-content">
+                    <div class="table-responsive">
+
+                        @{ var i = 0;}
+                        @foreach (var project in Model)
+
+                        {
+                            <div style="border-bottom:4px solid gray; border-right:2px solid gray; margin-bottom:250px">
+                                @{ ProjectAssignHelper x = new ProjectAssignHelper(); }
+                                @{ int projectId = project.Id;}
+
+                                @{var users = x.ListUsersOnAProject(projectId);}
+
+                                <div class="row well">
+                                    <div class="col-md-8 padding" style="padding-top:40px; text-align:center">
+                                        <h2 id="@project.Name">@Html.DisplayFor(modelItem => project.Name)</h2>
+
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                        {
+                                            <p>
+                                                @Html.ActionLink("Edit", "Edit", new { id = project.Id })
+                                            </p>
+                                        }
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4>
+                                            Project Manager:
+
+                                            @project.ProjectManagerName
+
+                                            @*@if (project.ProjectManagerId.Any()) {
+
+
+                                                @ViewBag.ProjectManagers[i]
+                                                { i++;}
+
+                                                 }*@
+
+                                        </h4><br />
+                                        <h5>
+                                            @*Developers:*@
+
+
+                                            @*@foreach (var user in users)
+                                                {
+                                                    user.Roles.Select(u=>u.RoleId).Contains("99147a83-127c-4b02-9b6e-dd9905061185")
+                                                    if (User.IsInRole("Developer1") || User.IsInRole("Developer2") || User.IsInRole("Developer3") || User.IsInRole("Developer4"))
+                                                    {
+                                                        @user.FirstName<span></span>@user.LastName<span>&nbsp;||&nbsp;</span>
+                                                    }
+
+
+                                                }*@
+
+
+
+
+                                            All Users:
+                                            @foreach (var username in users)
+                {
+
+
+                                                @username.FirstName <span></span> @username.LastName<span>&nbsp; ||&nbsp;</span>
+
+
+
+                                            }
+
+                                        </h5>
+
+
+
+
+
+
+
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                        {
+                                            <a href="@Url.Action("ProjectAssign", "Projects", new { id = project.Id })" class="btn btn-dark-blue" id="btn">Assign Users to "@project.Name"</a> }
+
+                                        @*<div class="modal" id="modelWindow" role="dialog">
+                                                <div class="modal-dialog modal-sm vertical-align-center">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Heading</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container-fluid" style="padding-left:270px;">
+                                                                <h2>Create</h2>
+
+
+
+
+                                                                <div class="form-horizontal">
+                                                                    <h4>Project</h4>
+                                                                    <hr />
+                                                                    @foreach (var projects in Model)
+                                                                    {
+                                                                    @using (Html.BeginForm("ProjectAssign", "Projects", FormMethod.Post, null))
+                                                                    {
+                                                                        @Html.AntiForgeryToken()
+                                                                        @Html.HiddenFor(model => projects.Id)
+                                                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                                        @Html.HiddenFor(model => model.User.Id)
+                                                                        <div class="form-group">
+                                                                            @Html.LabelFor(model => projects.Users, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                                            <div class="col-md-10">
+                                                                                @Html.ListBox("selectedvalue", projects.Tickets., new { htmlAttributes = new { @class = "form -control" } })
+                                                                                @Html.ValidationMessageFor(model => model.Users, "", new { @class = "text-danger" })
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <input type="submit" value="Assign" name="button" class="btn btn-default" />
+                                                                    }
+
+                                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                                    @*<div class="form-group">
+                                                    <div class="col-md-offset-2 col-md-10">
+                                                        <input type="submit" value="Create" class="btn btn-default" />
+                                                    </div>
+                                                </div>
+                                                                </div>
+
+
+                                                                <div>
+                                                                    @Html.ActionLink("Back to List", "Index")
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                                    }*@
+
+
+
+                                        @{ var temporary = TempData["message"];}
+                                        @temporary
+
+                                    </div>
+                                </div>
+                                <hr />
+                                <br />
+                                <p>Ticket Table for: @Html.DisplayFor(modelItem => project.Name)</p>
+                                @*//foreach (var user in project.Users) {
+                                    //    foreach (var userb in users) {
+                                    //        if (user == userb)
+                                    //        {*@
+
+
+                                <p><a href="@Url.Action("Create", "Tickets", new { id = project.Id })"> Create New Tickets for @Html.DisplayFor(modelItem => project.Name)</a></p><br />
+                                @{ var temporarymessage = TempData["createticketmessage"];
+                                    @temporarymessage}
+                                <br /><br />
+                                @*}
+                                        }
+                                    }*@
+                                @*//Project project = db.Projects.Find(projectId);
+                                    //return project.Users.ToList();*@
+
+
+                                <table id="example1" class="table table-theme table-striped" style="text-align:right;">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:right">Ticket Priority</th>
+                                            <th style="text-align:right">Ticket Details</th>
+                                            <th style="text-align:right">Ticket Description</th>
+                                            <th style="text-align:right">Ticket Status</th>
+                                            <th style="text-align:right">Ticket Submitted Date</th>
+
+
+                                            <th style="text-align:right">Ticket Assigned To</th>
+                                            @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                            {
+                                                <th style="text-align:right">Ticket Action</th>
+                                            }
+                                        
+                                            <th style="text-align:right">
+                                                Ticket Attachments
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3")
+                    || User.IsInRole("Developer1") || User.IsInRole("Developer2") || User.IsInRole("Developer3") || User.IsInRole("Developer4"))
+                                        {
+
+
+                                            foreach (var ticketdescription in project.Tickets)
+                                            {
+                                                if (ticketdescription.TicketStatus.Name != "Archived")
+                                                {
+
+                                                    <tr>
+
+                                                        <td>
+                                                            @if (ticketdescription.TicketPriority.Name == "Urgent")
+                                                            {
+                                                                <span style="color:red">@Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                                            {
+                                                                <a href="@Url.Action("Details", "Tickets", new { id = ticketdescription.Id })" class="btn btn-dark-blue" style="width:240px">
+                                                                    @Html.DisplayFor(modelItem => ticketdescription.Title)
+                                                            </a>
+                                                            }
+                                                            else { @Html.DisplayFor(modelItem => ticketdescription.Title)}
+                                                        </td>
+                                                              
+                                                                    
+                                                    <td>@Html.DisplayFor(modelItem => ticketdescription.Description)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ticketdescription.TicketStatus.Name)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ticketdescription.CreatedDate)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.FirstName) @Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.LastName)</td>
+
+
+
+                                                    @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                                    {
+                                                        <td>
+                                                            <a href="@Url.Action("TicketAssign", "Tickets", new { id = ticketdescription.Id })" class="btn btn-dark-blue">Assign/Reassign Ticket</a>
+
+                                                        </td>
+                                                    }
+                                                
+
+                                                    <td>
+                                                        @foreach (var attachment in ticketdescription.TicketAttachments)
+                                                        {<a href = "@Url.Action("Details", "Tickets", new { id = ticketdescription.Id })" ><span class="icon-paperclip">&nbsp; &nbsp;</span></a>}
+                                                    </td>
+
+
+                                                </tr>
+
+                                                }
+                                            }
+
+                                        }
+                                        @*else
+                                            {
+
+
+                                                foreach (var ticketdescription in project.Tickets.Where(t =>t.SubmitterUserId ==  )
+                                                {
+                                                    if (ticketdescription.SubmitterUserId == Model.
+                                                    <tr>
+
+                                                        <td>
+                                                            @if (ticketdescription.TicketPriority.Name == "Urgent")
+                                                            {
+                                                                <span style="color:red">@Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)
+                                                            }
+                                                        </td>
+                                                        <td><a href="@Url.Action("Details","Tickets",new { id = ticketdescription.Id })" class="btn btn-dark-blue" style="width:240px">@Html.DisplayFor(modelItem => ticketdescription.Title)</a></td>
+                                                        <td>@Html.DisplayFor(modelItem => ticketdescription.Description)</td>
+                                                        <td>@Html.DisplayFor(modelItem => ticketdescription.TicketStatus.Name)</td>
+                                                        <td>@Html.DisplayFor(modelItem => ticketdescription.CreatedDate)</td>
+                                                        <td>@Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.FirstName) @Html.DisplayFor(modelItem => ticketdescription.AssignedToUser.LastName)</td>
+
+
+
+                                                        @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                                        {
+                                                            <td>
+                                                                <a href="@Url.Action("TicketAssign", "Tickets", new { id = ticketdescription.Id })" class="btn btn-dark-blue">Assign/Reassign Ticket</a>
+                                                            </td>
+                                                        }
+
+                                                        <td>
+                                                            @foreach (var attachment in ticketdescription.TicketAttachments)
+                                                            {<a href="@Url.Action("Details","TicketAttachments", new { id = attachment.Id })"><span class="icon-paperclip">&nbsp; &nbsp;</span></a>}
+                                                        </td>
+
+
+                                                    </tr>
+
+
+                                                }
+
+                                            }*@
+                                    </tbody>
+
+
+
+
+                                </table>
+                                <br /><br />
+                            </div>
+
+                                    }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- End of Page Content -->
+
+  
+    <!-- Footer -->
+
+
+    @section scripts {
+        <script src="~/third-party/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/third-party/datatables/media/js/dataTables.bootstrap.min.js"></script>
+
+        <!-- Export functionality -->
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+        <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <!-- End of Export functionality -->
+
+        <script>
+            //$('#example1').DataTable();
+            //$('#example2').DataTable({
+            //$('.table').DataTable();
+            $('.table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+
+        </script>
+        <script>
+
+            $('#btn').click(function () {
+                $('#modelWindow').modal('show');
+            });
+        </script>
+
+    }
+</body>
+
+
+
+</html>

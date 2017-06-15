@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNet.Identity
+@using BugTracker.Models
+
+
+
+<span style="float:left; vertical-align:middle; padding-left:20px; color: #fff !important;
+    text-transform: uppercase;"><br />
+    @if (Request.IsAuthenticated)
+    {
+        var db = new ApplicationDbContext();
+        var user = db.Users.Find(User.Identity.GetUserId());
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+
+        {
+            @Html.AntiForgeryToken()
+            if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3") || User.IsInRole("Developer1") || User.IsInRole("Developer2") || User.IsInRole("Developer3") || User.IsInRole("Developer4") || User.IsInRole("Submitter"))
+            {
+
+
+            }
+            
+                @*@Html.ActionLink("     " + "Hello " + user.DisplayName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                @*@Html.ActionLink("Hello " + User.Identity.GetDisplayName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+
+            
+                <a href="javascript:document.getElementById('logoutForm').submit()"> &nbsp; &nbsp; &nbsp; &nbsp;<span style="color:white">Log off</span></a>
+        
+
+        }
+
+    }
+
+
+    else
+    {
+
+       @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) 
+        <span>&nbsp; &nbsp;</span>
+        
+            @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+        
+
+
+    }
+</span>
+

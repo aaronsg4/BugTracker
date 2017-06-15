@@ -1,0 +1,310 @@
+﻿
+@model IEnumerable<BugTracker.Models.Project>
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Remove "header-side" if side menu isn't present | Remove "in" if you want the side-header closed by default -->
+
+<body class="header-side in">
+    <!-- Page Loader -->
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Header - Add "light" for light menu | "nav-dark-blue" for dark-blue accent | "nav-blue" for blue accent | "nav-blue-grey" for blue-grey accent |
+             "nav-green" for green accent | "nav-dark-green" for dark-green accent | "nav-purple" for purple accent | "nav-red" for red accent |
+              "nav-Orange" for Orange accent | "nav-yellow" for yellow accent -->
+        <!-- End of Header -->
+        <!-- Sliding Chat : add "chat-light" along with "chat-slide" for light chat window-->
+        <!-- End of Chat -->
+
+        <div class="section-admin container-fluid">
+            <div class="row admin text-center">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="admin-content">
+                                <h4 class="text-left text-uppercase"><b>Orders</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="col-xs-3 mar-bot-15 text-left">
+                                        <label class="label bg-green">30% <i class="arrow_up"></i></span>
+                                    </div>
+                                    <div class="col-xs-9 mar-bot-15">
+                                        <h2 class="text-right no-margin">10,000</h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm">
+                                    <div class="bg-green progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6" style="margin-bottom:1px;">
+                            <div class="admin-content">
+                                <h4 class="text-left text-uppercase"><b>Tax Deduction</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="text-left col-xs-3 mar-bot-15">
+                                        <label class="label bg-red">15% <i class="arrow_down"></i></span>
+                                    </div>
+                                    <div class="col-xs-9 mar-bot-15">
+                                        <h2 class="text-right no-margin">5,000</h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm">
+                                    <div class="bg-red progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="admin-content">
+                                <h4 class="text-left text-uppercase"><b>Revenue</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="text-left col-xs-3 mar-bot-15">
+                                        <label class="label bg-blue">50% <i class="arrow_up"></i></span>
+                                    </div>
+                                    <div class="col-xs-9 mar-bot-15">
+                                        <h2 class="text-right no-margin">$70,000</h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm">
+                                    <div class="bg-blue progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="admin-content">
+                                <h4 class="text-left text-uppercase"><b>Yearly Sales</b></h4>
+                                <div class="row vertical-center-box vertical-center-box-tablet">
+                                    <div class="text-left col-xs-3 mar-bot-15">
+                                        <label class="label bg-purple">80% <i class="arrow_up"></i></span>
+                                    </div>
+                                    <div class="col-xs-9 mar-bot-15">
+                                        <h2 class="text-right no-margin">$100,000</h2>
+                                    </div>
+                                </div>
+                                <div class="progress progress-sm">
+                                    <div class="bg-purple progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section-admin container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="admin-content">
+                        @if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                        {
+                            <h3><b> Below you will find a list of All Projects and Tickets within each corresponding project.  To view only the Projects you are assigned to, click My Projects</b></h3><br/>
+                        }
+
+
+                             @if (User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1")) {
+                            <h3><b> Below you will find a list of Projects and Tickets that you are assigned to.  </b></h3 ><br/>
+                                                                    } 
+
+                            <div class="table-responsive">
+                            @foreach(var Project in Model)
+                        {
+                                < table class="table table-theme table-clear table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+
+                                                @Html.DisplayFor(modelItem => Project.Name)
+                                                <div class="btn-group" data-toggle="buttons" style="padding-left:1000px">
+                                                    <label class="btn btn-grey active">
+                        @*<input type="radio" name="options" class="toggle" id="option1" checked>*@
+
+                                                        @if(User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
+                                                            {
+                                                        @Html.ActionLink("Assign Project", "ProjectAssign", new { id = Project.Id
+                            })
+                                                            }
+                                                    </label>
+                                                    <label class="btn btn-grey">
+                                                        <input type = "radio" name="options" class="toggle" id="option2">Week
+                                                      </label>
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Ticket Title
+                                            </th>
+                                            <th>
+                                                Ticket Description
+                                            </th>
+                                            <th>
+                                                Ticket Status
+                                            </th>
+                                            <th>
+                                                Ticket Priority
+                                            </th>
+                                            <th>
+                                                Ticket Attachments
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-lighter">
+                                        @foreach(var ticketdescription in Project.Tickets)
+                        {
+                                            < tr >
+                                                < td >
+                                                    @Html.DisplayFor(modelItem => ticketdescription.Title)   @*//display in the first column the Ticket TITLE*@
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => ticketdescription.Description)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => ticketdescription.TicketStatus.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => ticketdescription.TicketPriority.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => ticketdescription.TicketAttachments)
+                                                    </td>
+                                                    </tr>
+                                                    }
+                                                    </tbody>
+                                                    </table>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- End of Page Content -->
+
+                                <div class="section-admin container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <!-- BEGIN PORTLET-->
+                                            <div class="portlet portlet-bordered">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <span class="caption-subject text-uppercase">Product Sales</span>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <div class="btn-group" data-toggle="buttons">
+                                                            <label class="btn btn-grey active">
+                                                                <input type="radio" name="options" class="toggle" id="option1" checked>Today
+                                                            </label>
+                                                            <label class="btn btn-grey">
+                                                                <input type="radio" name="options" class="toggle" id="option2">Week
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body text-center">
+                                                    <ul class="list-inline pad-top-10">
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #24caa1;"></i>Bags</h5>
+                                                        </li>
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #3f4d9f;"></i>Shoes</h5>
+                                                        </li>
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #ff7f5a;"></i>Jewelery</h5>
+                                                        </li>
+                                                    </ul>
+                                                    <div id="sparkline2" class="sparkline-container">Loading..</div>
+                                                </div>
+                                            </div>
+                                            <!-- END PORTLET-->
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- BEGIN PORTLET-->
+                                            <div class="portlet portlet-bordered">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <span class="caption-subject text-uppercase">Order Stats</span>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-dark-blue btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Upload">
+                                                            <i class="icon_cloud-upload_alt icon-lg"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-dark btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Refresh">
+                                                            <i class="glyphicon glyphicon-repeat"></i>
+                                                        </a>
+                                                        <a href="#" class="btn btn-blue-grey btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body pad-top-10-desktop text-center">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #805bbe;"></i>Bags</h5>
+                                                        </li>
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #faca39;"></i>Shoes</h5>
+                                                        </li>
+                                                        <li>
+                                                            <h5><i class="fa fa-circle mar-right-5" style="color: #2eb7f3;"></i>Jewelery</h5>
+                                                        </li>
+                                                    </ul>
+                                                    <div id="sparkline1" class="sparkline-container">Loading..</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <!-- BEGIN PORTLET-->
+                                            <div class="portlet portlet-bordered">
+                                                <div class="portlet-title">
+                                                    <div class="caption">
+                                                        <span class="caption-subject text-uppercase">Recent Reviews</span>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <a href="#" class="btn btn-green btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Refresh">
+                                                            <i class="glyphicon glyphicon-repeat"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="portlet-body pad-top-10-desktop text-center">
+                                                    <!-- Carousel with Pagination -->
+
+                                                    <div class="owl-carousel owl-theme pad-top-25 pad-bot-25" data-auto-height="true" data-items="1" data-items-desktop="1" data-items-tablet="[991,1]" data-items-mobile="[767,1]">
+                                                        <div class="item">
+                                                            <h4>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</h4>
+                                                            <img class="img-circle" alt="image" src="~/images/team/3-square.jpg" width="80" />
+                                                        </div>
+                                                        <div class="item">
+                                                            <h4>
+                                                                Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+                                                                Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, enim.
+                                                            </h4>
+                                                            <img class="img-circle" alt="image" src="~/images/team/2-square.jpg" width="80" />
+                                                        </div>
+                                                        <div class="item">
+                                                            <h4>
+                                                                Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+                                                                vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+                                                            </h4>
+                                                            <img class="img-circle" alt="image" src="~/images/team/1-square.jpg" width="80" />
+                                                        </div>
+                                                    </div><!-- End of Carousel -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Footer -->
+
+
+                            </body>
+</html>
