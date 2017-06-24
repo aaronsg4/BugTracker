@@ -10,7 +10,7 @@ namespace BugTracker.Controllers
 {
     public class UsersController : Controller
     {
-        private static ApplicationDbContext db = new ApplicationDbContext(); //static may create problems if this instance of the DB never changes  - if so, take static off and instantiate within each action
+        private static ApplicationDbContext db = new ApplicationDbContext();
         UserRolesHelper helper = new UserRolesHelper(db);
         ProjectAssignHelper pHelper = new ProjectAssignHelper();
 
@@ -128,8 +128,6 @@ namespace BugTracker.Controllers
                     }
                 }
                                
-                //db.Users.Add(model.User);
-                //db.SaveChanges();
 
                 if (model.Roles.Any())
                 {
@@ -137,11 +135,10 @@ namespace BugTracker.Controllers
                     {
                         if (role != "Submitter")
                         {
-                            //var userId = model.User.Id;
+          
                             helper.AddUserToRole(Id, role);
                             db.SaveChanges();
-                            //var topics = db.Topics.AsNoTracking().FirstOrDefault(t => t.Id == topicId);
-                            //model.Post.Topics.Add(topics);
+
                         }
                     }
                 }

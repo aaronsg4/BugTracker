@@ -225,23 +225,6 @@ namespace BugTracker.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = db.Users.Find(userId);
-            //var usersonproject = helper.ListUsersOnAProject((int)Id);
-            //var allprojects = db.Projects.Where(u => u.Users == user);
-
-            //List<ApplicationUser> ProjectUsers= new List<ApplicationUser>();
-
-            //foreach (var u in allprojects)
-            //{
-            //    ProjectUsers.Add(u.Users
-            //}
-
-            //return 
-
-
-
-            //var allusers = allprojects.
-            ////var users = db.Users.Where(t => t.Projects == user.Projects).ToList();
-            //ViewBag.Users = users;
             return View(user.Projects.ToList());
         }
 
@@ -389,18 +372,14 @@ namespace BugTracker.Controllers
                     helper.RemoveUserFromAProject(user.Id, (int)model.projectId);
                 }
 
-                //db.Users.Add(model.User);
-                //db.SaveChanges();
-
                 if (model.selectedvalue.Any())
                 {
                     foreach (var user in model.selectedvalue)
                     {
-                        //var userId = model.User.Id;
+
                         helper.AddUserToAProject (user, (int)model.projectId);
                         db.SaveChanges();
-                        //var topics = db.Topics.AsNoTracking().FirstOrDefault(t => t.Id == topicId);
-                        //model.Post.Topics.Add(topics);
+
                     }
                 }
                 return RedirectToAction("Index");
@@ -408,51 +387,7 @@ namespace BugTracker.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult ProjectAssign([Bind(Include = "First Name")] ApplicationUser Users, int Id)
-
-
-        //{
-
-
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        //db.Users.Add(model.User);
-        //        //db.SaveChanges();
-
-        //        if (Users.Id.Any())
-        //        {
-        //            foreach (var User in Users.Projects)
-        //            {
-        //                //var userId = model.User.Id;
-        //                helper.AddUserToRole(Id, db.Roles.Find(role).Name);
-        //                db.SaveChanges();
-        //                //var topics = db.Topics.AsNoTracking().FirstOrDefault(t => t.Id == topicId);
-        //                //model.Post.Topics.Add(topics);
-        //            }
-        //        }
-
-        //        UsersRolesViewModel userRoleViewModel = new UsersRolesViewModel();
-        //        userRoleViewModel.User = db.Users.Find(Id);
-        //        userRoleViewModel.Roles = helper.ListUserRoles(Id);
-        //        ViewBag.Roles = new MultiSelectList(db.Roles, "Id", "Name");
-
-        //        //ViewBag.Roles = new MultiSelectList(db.Topics, "Id", "TopicName");
-
-        //        return View(userRoleViewModel);
-
-
-        //    }
-        //    ViewBag.Topics = new MultiSelectList(db.Roles, "Id", "Description");
-        //    return View(model);
-        //}
-
-
-
-
-
+    
 
         [Authorize(Roles = "Admin, Administrator, Project Manager1, Project Manager2, Project Manager3")]
         // GET: Projects/Edit/5
@@ -494,13 +429,10 @@ namespace BugTracker.Controllers
 
             }
           
-           
-            //ViewBag.SubmitterUserId = new SelectList(db.Users, "Id", "FirstName");
+        
             ViewBag.ProjectStatusId = new SelectList(db.ProjectStatuses, "Id","Name");
-            //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name");
             ViewBag.ProjectManagerId = new SelectList(PM1, "Id", "FirstName");
-            //ViewBag.TicketTitle = new SelectList(db.Tickets, "Id", "Name");
-            //ViewBag.TicketDescription = new SelectList(db.TicketTypes, "Id", "Name");
+
             return View(project);
         }
         

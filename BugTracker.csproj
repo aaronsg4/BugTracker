@@ -370,7 +370,6 @@
     <Content Include="Uploads\a72d014e-d9c4-433e-b65a-449b2b982ad7Aaron_S_GayResume_2017.docx" />
     <Content Include="Uploads\b46c40f1-da8a-4677-b697-d99b93c29ad9Aaron_S_GayResume_2017.docx" />
     <Content Include="Uploads\efc9f078-4bdd-459e-9152-5b20cfccf382Aaron_S_GayResume_2017.docx" />
-    <None Include="Views\Home\index2.cshtml" />
     <Content Include="js\custom.js" />
     <Content Include="js\formsValidator.min.js" />
     <Content Include="js\scripts.js" />
@@ -2880,7 +2879,6 @@
     <Content Include="Views\Tickets\Archive.cshtml" />
     <Content Include="Views\Tickets\Details2.cshtml" />
     <Content Include="Views\Tickets\Edit.cshtml" />
-    <Content Include="Views\Tickets\Index2.cshtml" />
     <Content Include="Views\TicketAttachments\Create.cshtml" />
     <Content Include="Views\TicketAttachments\Delete.cshtml" />
     <Content Include="Views\TicketAttachments\Details.cshtml" />
@@ -2918,10 +2916,8 @@
     <Content Include="Views\TicketTypes\Index.cshtml" />
     <Content Include="Views\Projects\_SidebarPartial.cshtml" />
     <Content Include="Views\Manage\ChangeDisplayName.cshtml" />
-    <Content Include="Views\Projects\Index2.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\Details2.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Projects\ProjectAssign.cshtml" />
     <Content Include="Views\Tickets\TicketAssign.cshtml" />

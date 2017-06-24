@@ -5,7 +5,7 @@
 
 
     {
-        //if user is in role admin or pm show all of the projects
+
         foreach (var project in Model.Projectsb)
         {
             <li><a href="@Url.Action("Index" ,"Projects")#@project.Name"> @project.Name</a></li>
@@ -17,18 +17,5 @@
 
 
 </ul>
-@*<li><a href="@Url.Action("Index" ,"Projects")#@Model.Proje> @project.Name</a></li>
 
-    }
-    @foreach (var project in Model.Projectsb)
-    {
-        <li><a href="@Url.Action("Index" ,"Projects")#@project.Name"> @project.Name</a></li>
-    }*@
 
-@*@if (Model.Roles.ToString().Contains("Developer1") || Model.Roles.ToString().Contains("Developer2") || Model.Roles.ToString().Contains("Developer3") || Model.Roles.ToString().Contains("Developer4"))
-    {
-        <li><a href="@Url.Action("Index" ,"Projects")#@Proj.Name"> @project.Name</a></li>
-    }
-    //else if user is in role developer or submitter
-
-    // show projects they belong to*@

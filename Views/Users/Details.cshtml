@@ -51,7 +51,7 @@
                                         {
                                             @Html.AntiForgeryToken()
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                            @*@Html.HiddenFor(model => model.User.Id)*@
+                      
 
                                         if (User.IsInRole("Administrator") || User.IsInRole("Admin"))
                                         {
@@ -77,11 +77,7 @@
                                         }
 
 
-                                        @*<ul>
-                                                <li class="active"><a href="#">Assign New Role</a><span class="icon_house_alt"></span></li>
-                                                <li><a href="user-account.html">Reassign Existing Role(s)</a><span class="icon_cog"></span></li>
-                                                <li><a href="user-help.html">Assign To New Project</a><span class="icon_info_alt"></span></li>
-                                            </ul>*@<!-- End of Profile Links -->
+           
                                     </div>
                                 </div>
                             </div>
@@ -133,12 +129,12 @@
                                     </div>
                                     @if (User.IsInRole("Administrator, Admin"))
                                     {
-                                        @*<h4 class="weight-600">About</h4>*@
+                        
                                     using (Html.BeginForm("Details", "Users", FormMethod.Post, new { id = Model.User.Id }))
                                     {
                                         @Html.AntiForgeryToken()
                                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        @*@Html.HiddenFor(model => model.User.Id)*@
+                        
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
@@ -151,8 +147,7 @@
                                     }
                                     <br /><br />
                                     <span class="fa fa-fw fa-globe mar-right-5"></span><a href="mailto:@Model.User.Email">@Model.User.Email</a><br />
-                                    @*<span class="fa fa-fw fa-twitter mar-right-5"></span><a href="#">amazyne</a><br />
-                                        <span class="fa fa-fw fa-facebook mar-right-5"></span><a href="#">Nucleus.amazyne</a>*@
+                  
                                 </div>
                             </div>
                         </div>
@@ -166,77 +161,7 @@
                                         <h3>Open Support Tickets!</h3>
                                     </div>
 
-                                    <!--Accordion - Chevron Right -->
-                                    <!-- For MULTIPLE TABS OPEN - NO NEED for id="..." in the below div of panel-group AND NO NEED for data-parent="..." in panel-heading div -->
-                                    @*<div class="panel-group panel-icon-right theme-panel">
 
-                                            <!-- Panel 1 -->
-
-                                            <div class="panel panel-default">
-
-                                                <!-- Panel Heading -->
-
-                                                <div class="panel-heading" data-toggle="collapse" data-target="#collapse2">
-                                                    <h4 class="panel-title chevron accordion-toggle">
-
-                                                    </h4>
-
-                                                </div>
-
-                                                <!-- Panel Content -->
-
-                                                <div id="collapse2" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-                                                        <form id="todo-list">
-                                                            <span class="todo-wrap">
-                                                                <input type="checkbox" id="1" checked />
-                                                                <label for="1" class="todo">
-                                                                    <i class="icon_check"></i>
-                                                                    Have a good idea
-                                                                </label>
-                                                                <span class="delete-item" title="remove">
-                                                                    <i class="icon_close"></i>
-                                                                </span>
-                                                            </span>
-                                                            <span class="todo-wrap">
-                                                                <input type="checkbox" id="2" />
-                                                                <label for="2" class="todo">
-                                                                    <i class="icon_check"></i>
-                                                                    Plan idea execution
-                                                                </label>
-                                                                <span class="delete-item" title="remove">
-                                                                    <i class="icon_close"></i>
-                                                                </span>
-                                                            </span>
-                                                            <span class="todo-wrap">
-                                                                <input type="checkbox" id="3" />
-                                                                <label for="3" class="todo">
-                                                                    <i class="icon_check"></i>
-                                                                    Execute idea
-                                                                </label>
-                                                                <span class="delete-item" title="remove">
-                                                                    <i class="icon_close"></i>
-                                                                </span>
-                                                            </span>
-                                                            <span class="todo-wrap">
-                                                                <input type="checkbox" id="4" />
-                                                                <label for="4" class="todo">
-                                                                    <i class="icon_check"></i>
-                                                                    Celebrate with a cold one
-                                                                </label>
-                                                                <span class="delete-item" title="remove">
-                                                                    <i class="icon_close"></i>
-                                                                </span>
-                                                            </span>
-                                                            <div id="add-todo">
-                                                                <i class="icon_plus"></i>
-                                                                Add an Item
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!--End of Accordion - Chevron Right -->*@
                                     <div class="col-lg-12">
                                         <!-- BEGIN PORTLET-->
                                         <div class="portlet portlet-bordered">
@@ -244,18 +169,7 @@
                                                 <div class="caption">
                                                     <span class="caption-subject">TICKETS</span>
                                                 </div>
-                                                @*<ul class="nav nav-tabs">
-                                                        <li class="active">
-                                                            <a href="#portlet_tab1" data-toggle="tab">
-                                                                System
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#portlet_tab2" data-toggle="tab">
-                                                                Activities
-                                                            </a>
-                                                        </li>
-                                                    </ul>*@
+                                            
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="tab-content">
@@ -280,49 +194,17 @@
                                                                                 }
                                                                             }
 
-                                                                            @*<span class="label bg-red">Overdue</span>*@<span class="label bg-red"></span>
-                                                                            @*</span><span class="time-badge">Just Now</span>*@
+                                                                        
 
                                                                             </a>
                                                                     </li>
 
-                                                                    @*<li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="label bg-blue">Take Action</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>*@
+                                                                  
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    @*<div class="tab-pane" id="portlet_tab2">
-                                                            <div class="slim-scroll-content">
-                                                                <div class="slim-scroll-div">
-                                                                    <ul class="notification-list">
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
+                                                  
                                                 </div>
                                             </div>
                                         </div><!-- END PORTLET-->
@@ -334,18 +216,7 @@
                                                 <div class="caption">
                                                     <span class="caption-subject">Projects</span>
                                                 </div>
-                                                @*<ul class="nav nav-tabs">
-                                                        <li class="active">
-                                                            <a href="#portlet_tab1" data-toggle="tab">
-                                                                System
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#portlet_tab2" data-toggle="tab">
-                                                                Activities
-                                                            </a>
-                                                        </li>
-                                                    </ul>*@
+                                              
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="tab-content">
@@ -356,7 +227,7 @@
 
                                                                     <li>
                                                                         <a href="#">
-                                                                            @*<span class="details">*@
+                                                                       
                                                                             <div class="table-responsive">
                                                                                 <table class="table table-theme table-clear table-hover">
                                                                                     <thead>
@@ -397,70 +268,22 @@
 
                                                                                     </tbody>
                                                                                 </table>
-                                                                            </div>
-
-
-                                                                            @*<span class="label bg-red">Overdue</span>*@
-                                                                            @*</span><span class="time-badge">Just Now</span>*@
+                                                                           </div>
+                                                                                                                                              
                                                                         </a>
                                                                     </li>
-
-                                                                    @*<li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="label bg-blue">Take Action</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>*@
+                                                                                                                                       
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    @*<div class="tab-pane" id="portlet_tab2">
-                                                            <div class="slim-scroll-content">
-                                                                <div class="slim-scroll-div">
-                                                                    <ul class="notification-list">
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-dark icon_volume-high_alt"></i> Application Error</span><span class="time-badge">3 days</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-blue icon_plus_alt2"></i> 10 New Registrations</span><span class="time-badge">Just Now</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_mail_alt"></i> 5 New Messages</span><span class="time-badge">7 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-yellow icon_cog"></i> System Maintenance at 10 PM</span><span class="time-badge">15 min</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-green icon_like"></i> 40 New Followers</span><span class="time-badge">3 Hrs</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_blocked"></i> User IP Blocked</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-purple icon_volume-high_alt"></i> System Error</span><span class="time-badge">1 day</span></a></li>
-                                                                        <li><a href="#"><span class="details"><i class="bg-red icon_error-triangle_alt"></i> Storage Server #7 not responding</span><span class="time-badge">2 days</span></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>*@
+                                                    
                                                 </div>
                                             </div>
                                         </div><!-- END PORTLET-->
                                     </div>
 
-                                    @*<div class="admin-content ac-bordered">
-                                            <span class="counter-icon icon-speedometer"></span>
-                                            <h2 class="pad-bot-30">Server Statistics</h2>
-                                            <label class="progress-label">CPU USAGE</label><span class="percentage-left">20%</span>
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
-                                                </div>
-                                            </div>
-                                            <label class="progress-label">Bandwidth</label><span class="percentage-left">500 GB</span>
-                                            <div class="progress no-margin">
-                                                <div class="progress-bar progress-bar-warning two-sec-ease-in-out" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                                                </div>
-                                            </div>
-                                        </div>*@
+                                
                                 </div>
 
                             </div>
@@ -475,7 +298,7 @@
     <footer class="footer container-fluid">
         <div class="row">
             <div class="col-md-12 ">
-                <p class="letter-spacing-1">©2016 Nucleus - T. +01 2345 6788 - F. +01 2345 6789</p>
+            
             </div>
         </div>
     </footer><!-- End of Footer -->

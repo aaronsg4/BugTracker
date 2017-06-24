@@ -96,12 +96,11 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Add Attachment</label>
-                            @*@Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                     
                             <div class="col-md-10">
 
                                 <input type="file" name="File" class="form-control" />
-                                @*@Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })*@
-                                @*@Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })*@
+      
                             </div>
                         </div>
 
@@ -109,7 +108,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-2">Delete Attachment</label>
-                            @*@Html.LabelFor(model => Model.TicketAttachments, htmlAttributes: new { @class = "control-label col-md-2" })*@
+   
                             <div class="col-md-10">
 
                                 @Html.DropDownList("TicketAttachmentId", null, "Please select an attachment", htmlAttributes: new { @class = "form-control", })
@@ -122,13 +121,7 @@
 
 
 
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.SubmitterUser, "SubmitterUser", htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownList("SubmitterUserId", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.SubmitterUserId, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
+                      
                         @if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
                         {
 
@@ -194,21 +187,7 @@
                         }
 
 
-                        @*<div class="form-group">
-                                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.UpdatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.UpdatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.UpdatedDate, "", new { @class = "text-danger" })
-                                </div>
-                            </div>*@
+                     
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">

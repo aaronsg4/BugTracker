@@ -39,9 +39,7 @@
        
         <h2 style="font-variant:small-caps">Current Tickets</h2> @foreach (var user in Model)
         {
-            @*<p id="NameSlide" style="position:absolute">
-                for    @user.AssignedToUser.FirstName + "" + @user.AssignedToUser.LastName
-            </p>*@
+     
 
         }<br /><br />
         @if (User.IsInRole("Administrator") || User.IsInRole("Admin") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3"))
@@ -53,10 +51,7 @@
         }
 
 
-        @*@if (User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1") || User.IsInRole("Developer1"))
-        {
-            <h3><b> Below you will find a list of Tickets that you are assigned to.  </b></h3><br />
-        }*@
+ 
     </div>
 
 
@@ -67,17 +62,7 @@
             <div class="col-md-12">
                 <div class="admin-content">
                     <div class="table-responsive">
-                        @*@foreach (var ticket in Model)
-                        {*@
-                            @*<h2>@ticket.Title</h2>
-                            @ViewBag.users*@
-
-                            @*<p>@Html.DisplayFor(modelItem => project.Users.ToList</p>*@
-                            @*<p>
-                                @Html.ActionLink("Create", "Create", new { id = ticket.Id })
-                                @Html.ActionLink("Edit", "Edit", new { id = project.Id })
-                                @Html.ActionLink("Delete", "Delete", new { id = project.Id })
-                            </p>*@
+                  
 
                             <table id="example1" class="table table-theme table-striped">
                                 <thead>
@@ -174,9 +159,7 @@
         <!-- End of Export functionality -->
 
         <script>
-            //$('#example1').DataTable();
-            //$('#example2').DataTable({
-                //$('.table').DataTable();
+          
                     $('.table').DataTable({
                 dom: 'Bfrtip',
                 buttons: [

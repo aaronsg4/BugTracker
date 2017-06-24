@@ -114,13 +114,8 @@ namespace BugTracker.Controllers
                     ViewBag.urgentmessage = "Please attend to these tickets if you are assigned to them.";
                 }
 
-
-
                 return View(nonarchivedtickets2.ToList());
 
-
-                //var tickets = db.Tickets.Where(t => user.Projects.Select(p => p.Id).Contains(t.ProjectId)).ToList();
-                //return View(tickets);
             }
 
             else if (userroleDeveloper1)
@@ -357,9 +352,6 @@ namespace BugTracker.Controllers
                 var archivedtickets = tickets.Where(t => t.TicketStatus.Name == "Archived");
                 return View(archivedtickets.ToList());
 
-
-                //var tickets = db.Tickets.Where(t => user.Projects.Select(p => p.Id).Contains(t.ProjectId)).ToList();
-                //return View(tickets);
             }
 
             else if (userroleDeveloper1)
@@ -433,7 +425,7 @@ namespace BugTracker.Controllers
 
                 }
 
-                //return View(UserProjects);
+    
                 List<Ticket> usertickets = new List<Ticket>();
                 foreach (var project in UserProjects)
                 {
@@ -462,7 +454,7 @@ namespace BugTracker.Controllers
 
                 }
 
-                //return View(UserProjects);
+
                 List<Ticket> usertickets = new List<Ticket>();
                 foreach (var project in UserProjects)
                 {
@@ -614,13 +606,6 @@ namespace BugTracker.Controllers
                     ViewBag.urgentmessage = "Please attend to these tickets if you are assigned to them.";
                 }
 
-
-
-                
-
-
-                //var tickets = db.Tickets.Where(t => user.Projects.Select(p => p.Id).Contains(t.ProjectId)).ToList();
-                //return View(tickets);
             }
 
             else if (userroleDeveloper1)
@@ -669,8 +654,6 @@ namespace BugTracker.Controllers
                 }
 
 
-           
-
             }
             else if (userroleDeveloper2)
             {
@@ -714,7 +697,6 @@ namespace BugTracker.Controllers
                 {
                     ViewBag.urgentmessage = "Please attend to these tickets if you are assigned to them.";
                 }
-     
 
 
             }
@@ -760,7 +742,7 @@ namespace BugTracker.Controllers
                 {
                     ViewBag.urgentmessage = "Please attend to these tickets if you are assigned to them.";
                 }
-           
+
 
             }
 
@@ -805,7 +787,7 @@ namespace BugTracker.Controllers
                 {
                     ViewBag.urgentmessage = "Please attend to these tickets if you are assigned to them.";
                 }
-        
+
 
             }
 
@@ -821,9 +803,6 @@ namespace BugTracker.Controllers
             }
             List<Ticket> Tickets = new List<Ticket>();
 
-
-
-     
 
             if (!(UH.IsUserInRole(userId, "Admin") || UH.IsUserInRole(userId, "Administrator")))
             {
@@ -845,49 +824,7 @@ namespace BugTracker.Controllers
             {
                 return View(ticket);
             }
-            //foreach (var comment in ticket.TicketComments)
-            //{
-                
-            //    ViewBag.TimeLapse = DateTime.UtcNow.Hour - comment.CreatedDate.Hour;
-            //}
-            //if (UH.IsUserInRole(userId, "Admin") || UH.IsUserInRole(userId, "Administrator"))
-            //{
-            //    return View(ticket);
-            //}
-            //else if (UH.IsUserInRole(userId, "Project Manager1") && PA.IsUserOnAProject(userId, project) || UH.IsUserInRole(userId, "Project Manager2") && PA.IsUserOnAProject(userId, project) || UH.IsUserInRole(userId, "Project Manager3") && PA.IsUserOnAProject(userId, project))
-            //{
-            //    List<Ticket> TicketList = new List<Ticket>();
-            //    foreach (var tickets in db.Tickets)
-            //    {
-            //        if (UH.IsUserInRole(userId, "Project Manager1") && PA.IsUserOnAProject(userId, project))
-            //         {
-            //            TicketList.Add(tickets);
-            //        }
-            //        if (UH.IsUserInRole(userId, "Project Manager2") && PA.IsUserOnAProject(userId, project))
-            //        {
-            //            if (!TicketList.Contains(tickets))
-            //            {
-            //                TicketList.Add(tickets);
-            //            }
-                        
-            //        }
-            //        if (UH.IsUserInRole(userId, "Project Manager2") && PA.IsUserOnAProject(userId, project))
-            //        {
-            //            if (!TicketList.Contains(tickets))
-            //            {
-            //                TicketList.Add(tickets);
-            //            }
-            //        }
-            //    }
-            //    if (TicketList.Contains(ticket))
-            //    {
-            //        return View(ticket);
-            //    }
-            //    else
-            //    {
-            //        return HttpNotFound();
-            //    }
-            //}
+   
             return View(ticket);
         }
 
@@ -904,27 +841,13 @@ namespace BugTracker.Controllers
             var userroleSubmitter = helper.IsUserInRole(userId, "Submiter");
             var userprojects = user.Projects.ToList();
 
-            //var projectId = Id;
-            //if (ph.IsUserOnAProject(userId, Id))
-            //{
-
-            //ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName");
-            //List<Project> UserProjects = new List<Project>();
-            //    foreach (var project in ph.ListProjectsForAUser(userId))
-
-            //    {
-            //        UserProjects.Add(project);
-            //    }
+         
 
             if (userprojects != null) {
 
                 ViewBag.ProjectId = new SelectList(userprojects, "Id", "Name");
-                //ViewBag.SubmitterUserId = new SelectList(db.Users, "Id", "FirstName");
                 ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name");
-                //ViewBag.TicketStatusId = new SelectList(db.TicketStatuses, "Id", "Name");
                 ViewBag.TicketTypeId = new SelectList(db.TicketTypes, "Id", "Name");
-                //ViewBag.TicketTitle = new SelectList(db.Tickets, "Id", "Name");
-                //ViewBag.TicketDescription = new SelectList(db.TicketTypes, "Id", "Name");
                 return View();
             }
         
@@ -1108,28 +1031,6 @@ namespace BugTracker.Controllers
                 db.SaveChanges();
 
 
-                    //var currentUser = db.Users.Find(User.Identity.GetUserId());
-                    //try
-                    //{
-                    //    var from = "BugTracker<aaronsg44@gmail.com>";
-                    //    var to = db.Users.Find(ticket.AssignedToUserId).Email;
-                    //    var email = new MailMessage(from, to)
-                    //    {
-                    //        Body = "The ticket assignment" + " " + oldTicket.Title + " " + "from project" + " " + oldTicket.Project.Name + " " + "has been changed on by" + " " + user.FirstName + user.LastName + "." + "  " +
-                    //               "Please see your tickets to view the change.",
-                    //        Subject = "Your ticket assignment has been changed.",
-                    //        IsBodyHtml = true
-                    //    };
-                    //    var svc = new PersonalEmail();
-                    //    await svc.SendAsync(email);
-                    //    ViewBag.Message = "Email has been sent";
-                    //    return RedirectToAction("Index", "Projects");
-                    //}
-                    //catch (Exception e)
-                    //{
-                    //    Console.WriteLine(e.Message);
-                    //    await Task.FromResult(0);
-                    //}
                     if (TN != null)
                     {
                         EmailService email = new EmailService();
@@ -1158,33 +1059,7 @@ namespace BugTracker.Controllers
           
 
         }
-        //        ApplicationUser user = db.Users.Find(userId);
-        //        Ticket ticket = db.Tickets.Find(TicketId);
-        //        ticket.AssignedToUser.Add(user);
-        //        db.SaveChanges();
-
-        //        helper.AddUserToAProject(user, (int)model.projectId);
-        //                db.SaveChanges();
-        //                //var topics = db.Topics.AsNoTracking().FirstOrDefault(t => t.Id == topicId);
-        //                //model.Post.Topics.Add(topics);
-        //            }
-        //        }
-        //    }
-        //    List<ApplicationUser> Developers = new List<ApplicationUser>();
-        //    var devs = helper.UsersInRole("Developer1");
-        //    var project = ticket.Project;
-        //    foreach (var dev in devs)
-        //    {
-        //        if (dev.Projects.Contains(project))
-        //        {
-        //            Developers.Add(dev);
-        //        }
-        //    }
-
-        //    ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
-
-        //    return View(ticket);
-        //}
+      
 
         public ActionResult TicketOwner()
         {
@@ -1212,19 +1087,8 @@ namespace BugTracker.Controllers
                 ticket.SubmitterUser = user;
                 ticket.SubmitterUserId = userId;
                 var TicketOwner = ticket.SubmitterUser;
-                //Ticket ticket = db.Tickets.Find(id);
-                //want to set ticketstatusId property of ticket model to the proper ticketstatus.Id
-                //first find the ticket status id corresponding with "Archived"
                 int unassignedId = db.TicketStatuses.FirstOrDefault(ts => ts.Name == "Unassigned").Id;
-
-                //then set ticket model property to equal it
                 ticket.TicketStatusId = unassignedId;
-
-                //here you want to say that you are editing the "ticket" entry because that is the model you are changing
-                //db.Entry(ticket).Property("TicketStatusId").IsModified = true;
-
-
-                //db.SaveChanges();
 
 
                 TicketAttachment TA = new TicketAttachment();
@@ -1246,9 +1110,6 @@ namespace BugTracker.Controllers
                 {
               
                     ErrorMessage = "Please select an image between 1KB-2MB and in an approved format (.jpg, .bmp, .png, .gif)";
-
-                    //return View(blogPost);
-
                     TA.FilePath = "~/images/radio-img.png"; 
                 }
 
@@ -1346,7 +1207,6 @@ namespace BugTracker.Controllers
                     ViewBag.AssignedToUserId = new SelectList(db.Users, "Id", "FirstName", ticket.AssignedToUserId);
                 }
                 ViewBag.ProjectId = new SelectList(db.Projects, "Id", "Name", ticket.ProjectId);
-                //ViewBag.SubmitterUserId = new SelectList(db.Users, "Id", "FirstName", ticket.SubmitterUserId);
                 ViewBag.TicketPriorityId = new SelectList(db.TicketPriorities, "Id", "Name", ticket.TicketPriorityId);
                 if (helper.IsUserInRole(userId, "Admin") || helper.IsUserInRole(userId, "Administrator"))
                 {
@@ -1444,8 +1304,7 @@ namespace BugTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "Id,ProjectId, CreatedDate, TicketTypeId,TicketPriorityId,TicketStatusId,AssignedToUserId, AssignedToUser, Title,Description")] Ticket ticket,  HttpPostedFileBase File, string TicketAttachmentId)
-            //Included created date above as hidden value because in code below when I say entity state has been modified if i dont pass the created date, it will go to a default date which
-            //will be out of range.  if you dont want to pass as hidden value, you can update each property individually (Property x HasBeenModified)
+
         {
             UserRolesHelper helper = new UserRolesHelper(db);
             ProjectAssignHelper ph = new ProjectAssignHelper();
@@ -1510,17 +1369,7 @@ namespace BugTracker.Controllers
                         return View(ticket);
                     }
                 }
-                //if (TicketAttachmentId != null)
-                //{
-                //    int TaId = Convert.ToInt32(TicketAttachmentId);
-                //    TicketAttachment ticketAttachment = db.TicketAttachments.Find(TaId);
-                //    db.TicketAttachments.Remove(ticketAttachment);
-                //}
-
-
-
-                //db.Tickets.Add(ticket);
-                //db.SaveChanges();
+    
 
                 db.Entry(ticket).State = EntityState.Modified;
 
@@ -1589,23 +1438,7 @@ namespace BugTracker.Controllers
                     }
                 }
 
-                //if (oldTicket.SubmitterUserId != ticket.SubmitterUserId)
-                //{
-                //    TicketHistory th4 = new TicketHistory  //Checking to see if New Submitter is equal to the Old Submitter
-
-                //    {
-                //        TicketId = ticket.Id,
-                //        UserId = userId,
-                //        Property = "Submitter",
-                //        OldValue = oldTicket.SubmitterUser.FirstName,
-                //        NewValue = ticket.SubmitterUser.FirstName,
-                //        DateChanged = DateTime.Now,
-
-                //    };
-                //    {
-                //        db.TicketHistories.Add(th4);
-                //    }
-                //}
+       
 
                 if (oldTicket.TicketPriorityId != ticket.TicketPriorityId)
                 {
@@ -1731,16 +1564,8 @@ namespace BugTracker.Controllers
                 var oldTicket = db.Tickets.AsNoTracking().FirstOrDefault(t => t.Id.Equals(ticket.Id));
                 var userId = User.Identity.GetUserId();
                 var user = db.Users.Find(userId);
-                //finding ticket to archive
-
-                //want to set ticketstatusId property of ticket model to the proper ticketstatus.Id
-                //first find the ticket status id corresponding with "Archived"
                 int archivedId = db.TicketStatuses.FirstOrDefault(ts => ts.Name == "Archived").Id;
-
-                //then set ticket model property to equal it
                 ticket.TicketStatusId = archivedId;
-
-                //here you want to say that you are editing the "ticket" entry because that is the model you are changing
                 db.Entry(ticket).Property("TicketStatusId").IsModified = true;
 
 
@@ -1755,7 +1580,7 @@ namespace BugTracker.Controllers
 
 
 
-                // Creating an instance of Ticket Assigned To User object to be able to access name from Id in code below
+        
                 ticket.AssignedToUser = db.Users.Find(ticket.AssignedToUserId);
 
                 if (oldTicket.TicketStatus.Name != ticket.TicketStatus.Name)  //Checking to see if New Description is Equal to old Description
@@ -1791,8 +1616,7 @@ namespace BugTracker.Controllers
                     };
                     await email.SendAsync(message);
                 }
-                    //db.Tickets.Remove(ticket);
-                    //db.SaveChanges();
+
                     return RedirectToAction("Index");
                 }
                 return RedirectToAction("Index");

@@ -53,11 +53,10 @@ namespace BugTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,TicketId,Comment")] TicketComment ticketComment, int Id)
         {
-            //var projectId = ticketComment.Ticket.Project.Id;
+
             if (ModelState.IsValid)
             {
 
-                //int projectid = ticketComment.Ticket.ProjectId;
                 UserRolesHelper helper = new UserRolesHelper(db);
                 ProjectAssignHelper ph = new ProjectAssignHelper();
                 var userId = User.Identity.GetUserId();
@@ -122,10 +121,6 @@ namespace BugTracker.Controllers
 
                     db.TicketComments.Add(ticketComment);
                     db.SaveChanges();
-
-                    //return RedirectToAction("Index");
-                    //return View(ticketComment);
-                    //return RedirectToAction( "Details", "Tickets", id);
                     return RedirectToAction("Details", "Tickets", new { id = Id });
                 }
 
@@ -140,9 +135,7 @@ namespace BugTracker.Controllers
                 }
             }
             return RedirectToAction("Details", "Tickets", new { id = Id });
-            //ViewBag.TicketId = new SelectList(db.Tickets, "Id", "SubmitterUserId", ticketComment.TicketId);
-            //ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", ticketComment.UserId);
-            //return View(ticketComment);
+
         }
 
         // GET: TicketComments/Edit/5

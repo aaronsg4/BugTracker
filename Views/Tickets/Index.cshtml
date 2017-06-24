@@ -2,9 +2,6 @@
 
 @using Microsoft.AspNet.Identity 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +19,7 @@
                     </div>
                     <div class="header-inline-content">
                         <ul class="breadcrumb">
-                            @*<li><a href="~/index.html">Home</a></li>
-                            <li class="active">Tables</li>*@
+ 
                             <li class="button"><a href="@Url.Action("Index","Home")" class="btn btn-dark-blue">Home</a></li>
                         </ul>
                     </div>
@@ -310,31 +306,16 @@
                                                 {
                                                     <a href="@Url.Action("Details", "Tickets", new { id = ticket.Id })"><i class="fa fa-question-circle-o" style="font-size:25px" aria-hidden="true" title="DETAILS"></i></a>
                                                 }
-                                            }
-
-
-                                            
+                                            }                                           
                                             
                                         </td>
 
-                                                @*<td><a href="@Url.Action("Create", "TicketComments", new { id = ticket.Id })">Leave a comment</a></td>
-                <td><a href="@Url.Action("Index", "TicketComments", new { id = ticket.Id })">View X number of Comments</a></td>*@
-                                                @*<td><a href="@Url.Action("Details", "Tickets", new { id = ticket.Id })">Details</a></td>*@
-</tr>
-
-
-
+                                        </tr>
                                             }
-
-
-
                             </tbody>
-
                         </table>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

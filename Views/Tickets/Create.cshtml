@@ -42,11 +42,10 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-2">Upload File</label>
-                        @*@Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                   
                         <div class="col-md-7">
                             <input type="file" name="File" class="form-control" />
-                            @*@Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @*@Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })*@
+                         
                         </div>
                     </div>
 
@@ -67,29 +66,10 @@
                         </div>
                     </div>
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.TicketStatusId, "Ticket Status", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("TicketStatusId", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.TicketStatusId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+                   
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.SubmitterUserId, "SubmitterUserId", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("SubmitterUserId", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.SubmitterUserId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+                  
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.AssignedToUserId, "AssignedToUserId", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("AssignedToUserId", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.AssignedToUserId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -107,21 +87,8 @@
                         </div>
                     </div>
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
 
-                    @*<div class="form-group">
-                            @Html.LabelFor(model => model.UpdatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.UpdatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.UpdatedDate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+              
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">

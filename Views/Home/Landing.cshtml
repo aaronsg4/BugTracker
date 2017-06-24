@@ -7,7 +7,7 @@
 <html lang="en">
 
 
-<!-- Remove "header-side" if side menu isn't present | Remove "in" if you want the side-header closed by default -->
+
 
 <body class="header-side in">
     <!-- Page Loader -->
@@ -34,15 +34,7 @@
     </section><!-- End of Page Header -->
     <!-- Page Content -->
     <div class="page-content">
-        <!-- Header - Add "light" for light menu | "nav-dark-blue" for dark-blue accent | "nav-blue" for blue accent | "nav-blue-grey" for blue-grey accent |
-             "nav-green" for green accent | "nav-dark-green" for dark-green accent | "nav-purple" for purple accent | "nav-red" for red accent |
-              "nav-Orange" for Orange accent | "nav-yellow" for yellow accent -->
-        <!-- Header Wrapper -->
-        <!-- End of Header -->
-        <!-- Sliding Chat : add "chat-light" along with "chat-slide" for light chat window-->
-
-
-
+      
         <div class="section-admin container-fluid">
             <div class="row admin text-center">
                 <div class="col-md-12" style="background-size:1500px; background-repeat: no-repeat; background-color: #fafafa">
@@ -56,7 +48,7 @@
                             @if (User.IsInRole("Admin") || User.IsInRole("Administrator") || User.IsInRole("Project Manager1") || User.IsInRole("Project Manager2") || User.IsInRole("Project Manager3") || User.IsInRole("Developer1") || User.IsInRole("Developer2") || User.IsInRole("Developer3") || User.IsInRole("Developer4"))
                             {
 
-<span>Let's get you started</span>
+                            <span>Let's get you started</span>
 
                             }
 
@@ -88,126 +80,52 @@
                                         <i>Admin.</i>
                                     }
 
-                                    @*{
-                                            <i>
-                                                Admin.  <br />As an Admin, you will be able to: <br /><br />
-                                                Assign Roles<br />
-                                                View Projects<br>
-                                                Edit Tickets<br />
-                                                And Much More!
-                                            </i>
-
-                                        }*@
+                              
 
                             else if (User.IsInRole("Project Manager1"))
                             {
 
                                 <i>Project Manager 1</i>
 
-                                        @*< i >
-                                              Project Manager1.  < br /> As a Project Manager1, you will be able to:< br />< br />
-                                                Create Projects < br />
-                                                Assign Users to Projects < br />
-                                                Assign Developers to Tickets<br>
-
-                                                And Much More!
-
-
-
-
-                                            </ i >*@
+                                    
                             }
                             else if (User.IsInRole("Project Manager2"))
                             {
                                 <i>Project Manager 2</i>
-                                        @*< i >
-                                              Project Manager2 < br /> As a Project Manager2, you will be able to:< br />< br />
-                                                Create Projects < br />
-                                                Assign Users to Projects < br />
-                                                Assign Developers to Tickets<br>
-
-                                                And Much More!
-
-
-
-
-                                            </ i >*@
+                                  
                             }
                             else if (User.IsInRole("Project Manager3"))
                             {
 
                                 <i>Project Manager 3</i>
-                                        @*< i >
-                                              Project Manager3 < br /> As a Project Manager3, you will be able to:< br />< br />
-                                                Create Projects < br />
-                                                Assign Users to Projects < br />
-                                                Assign Developers to Tickets<br>
-
-                                                And Much More!
-
-
-
-
-                                            </ i >*@
+                                      
                             }
 
                             else if (User.IsInRole("Developer1"))
                             {
 
                                 <i>Developer 1</i>
-                                        @*< i >
-                                              Developer1. < br /> As a Developer1, you will be able to:< br />< br />
-                                                View your Projects and Tickets< br />
-                                                Submit Tickets < br />
-                                                And More!
-
-
-
-                                            </ i >*@
+                                   
                             }
 
                             else if (User.IsInRole("Developer2"))
                             {
 
                                 <i>Developer 2</i>
-                                        @*< i >
-                                              Developer2 < br /> As a Developer2 you will be able to:< br />< br />
-                                                View your Projects and Tickets< br />
-                                                Submit Tickets < br />
-                                                And More!
-
-
-
-                                            </ i >*@
+                                     
                             }
                             else if (User.IsInRole("Developer3"))
                             {
 
                                 <i>Developer 3</i>
-                                        @*< i >
-                                              Developer3 < br /> As a Developer3 you will be able to:< br />< br />
-                                                View your Projects and Tickets< br />
-                                                Submit Tickets < br />
-                                                And More!
-
-
-
-                                            </ i >*@
+                                     
                             }
 
                             else if (User.IsInRole("Developer4"))
                             {
 
                                 <i>Developer 4</i>
-                                        @*< i >
-                                              Developer4 < br /> As a Developer4 you will be able to:< br />< br />
-                                                View your Projects and Tickets< br />
-                                                Submit Tickets < br />
-                                                And More!
-
-
-
-                                            </ i >*@
+                                      
                             }
 
 
@@ -215,10 +133,7 @@
                             {
 
                                 <i>Submitter</i>
-                                        @*< i >
-                                                Submitter.  < br /> As a Submitter, you will be able to:
-
-                                            </ i >*@
+                               
                                 }
 
                             }
@@ -229,12 +144,10 @@
                             <span class="glyphicon glyphicon-arrow-left"></span>To view projects / tickets / profiles, use the toolbar to the left.<br /><br />
                                 Inside you will be able to easily navigate the Bug Tracking system based on your designated role.  The Bug Tracker can be utilized for tracking all projects throughout the system
                                 as well as the tickets that pertain to each project.
-                                @*</p><br /><br /><br /><p style="font-size:15px; text-align:left">You can use the toolbar to the left to navigate quickly from project to tickets.  You can view grouped tickets and projects, or if you prefer you can view individual tickets and projects.
-                                      If you are working on a particular project, you will be able to view all of the details of the project, including the other users who are working on the same project and the tickets that are being worked on.  Being able to view all of the tickets for your
-                                    projects can help you coordinate with other system-users, streamlining the development process.*@  In addition to these features, you will also be able to view details of tickets, upload & download attachments to tickets,
+                                In addition to these features, you will also be able to view details of tickets, upload & download attachments to tickets,
                                 communicate back and forth on tickets through the comments section, and much more.
                                 Each authorized user for the Bug Tracker will also have access to their profile details.
-                            </p><br /><br /></b>
+                            </p><br /><br />
 
 
 
@@ -258,9 +171,7 @@
                             </div>
                             <div class="actions">
                                 <div class="btn-group" data-toggle="buttons">
-                                    @*<label class="btn btn-grey active">
-                                            <input type="radio" name="options" class="toggle" id="option1" checked>Today
-                                        </label>*@
+                                  
                                     <label class="btn btn-grey">
                                         <input type="radio" name="options" class="toggle" id="option2">Week
                                     </label>
@@ -279,7 +190,7 @@
                                     <h5><i class="fa fa-circle mar-right-5" style="color: #ff7f5a;"></i>Low Priority</h5>
                                 </li>
                             </ul>
-                            @*<div id="sparkline2" class="sparkline-container">Loading..</div>*@
+                        
 
                             <div id="ThirdChart" style="height:400px"></div>
 
@@ -299,15 +210,7 @@
                                 <span class="caption-subject text-uppercase">User Stats</span>
                             </div>
                             <div class="actions">
-                                @*<a href="#" class="btn btn-dark-blue btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Upload">
-                                    <i class="icon_cloud-upload_alt icon-lg"></i>
-                                </a>
-                                <a href="#" class="btn btn-dark btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Refresh">
-                                    <i class="glyphicon glyphicon-repeat"></i>
-                                </a>
-                                <a href="#" class="btn btn-blue-grey btn-circle active tip-top" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </a>*@
+                           
                             </div>
                         </div>
                         <div class="portlet-body pad-top-10-desktop text-center">
@@ -406,8 +309,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="@Url.Action("Index","Projects")#@project.Name" data-placement="top" data-toggle="tooltip" class="tip-top" data-original-title="View Details"><span class="glyphicon glyphicon-arrow-right"></span></a>
-                                                    @*<a href="#" data-placement="top" data-toggle="tooltip" class="tip-top" data-original-title="Edit"><span class="icon-arrow-right"></span></a>
-                                                        <a href="#" data-placement="top" data-toggle="tooltip" class="tip-top" data-original-title="Delete"><span class="icon_trash"></span></a>*@
+                                                  
                                                 </td>
                                             </tr>
                                         }
@@ -428,21 +330,18 @@
             <div class="col-md-10 text-center">
                 <a href="#home" data-jump-offset="70" class="jump clearfix text-uppercase letter-spacing-3">Back <span class="pe-7s-angle-up pe-5x pe-va"></span> Top</a>
                 <h2 class="text-uppercase letter-spacing-3 no-margin pad-bot-30 word-spacing-5 color-green wow animated fadeIn" data-wow-delay="1600ms"><b>BugTracker</b></h2>
-                @*<p style="font-size:25px">BUG TRACKER</p><br />*@
-                @*<img alt="image" class="mar-bot-30" width="150" src="~/images/logo-dark.png" />*@
+              
+             
                 <h6 class="text-lighter no-margin text-uppercase letter-spacing-2 pad-bot-30">A web - based software application bug - tracking system</h6>
-                @*<span><a href="#" class="btn btn-lg btn-green letter-spacing-2 mar-top-10"><span class="fa fa-shopping-cart fa-lg"></span>&nbsp;&nbsp;Buy On Wrapbootstrap</a></span>*@
+               
                 <ul class="list-unstyled list-inline footer-inline-links pad-top-15 pad-bot-10">
                     <li>
                         <ul class="social-icons circle list-inline list-unstyled">
-                            @*<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a class="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>*@
+                          
                         </ul>
                     </li>
                 </ul>
-                @*<h6 class="no-margin pad-bot-15 letter-spacing-2 word-spacing-5 text-uppercase"><i>©2016 Nucleus. All Rights Reserved.</i></h6>*@
+              
             </div>
         </div>
     </div>
@@ -471,15 +370,7 @@
             new Morris.Donut({
                 element: 'SecondChart',
                 data: @Html.Raw(Json.Encode(ViewBag.ArrData2)),
-                //labels: ['Administrators', 'Developers','ProjectManagers','Submitters','TotalUsers'],
-                //[
-                //{ label: '2001', value: 40000 },
-                //{ label: '2002', value: 45000 },
-                //{ label: '2003', value: 43000 },
-                //{ label: '2004', value: 46000 },
-                //{ label: '2005', value: 70000 },
-                //{ label: '2006', value: 100000 }
-                //],
+              
 
             })
 

@@ -58,12 +58,7 @@
                             <h2>@ticket.Title)</h2>
                             @ViewBag.users
 
-                            @*<p>@Html.DisplayFor(modelItem => project.Users.ToList</p>*@
-                            @*<p>
-                                    @Html.ActionLink("Create", "Create", new { id = ticket.Id })
-                                    @Html.ActionLink("Edit", "Edit", new { id = project.Id })
-                                    @Html.ActionLink("Delete", "Delete", new { id = project.Id })
-                                </p>*@
+                         
 
                             <table id="example1" class="table table-theme table-striped">
                                 <thead>
@@ -132,9 +127,7 @@
         <!-- End of Export functionality -->
 
         <script>
-            //$('#example1').DataTable();
-            //$('#example2').DataTable({
-                //$('.table').DataTable();
+          
                     $('.table').DataTable({
                 dom: 'Bfrtip',
                 buttons: [

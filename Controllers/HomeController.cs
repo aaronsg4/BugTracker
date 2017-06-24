@@ -25,25 +25,7 @@ namespace BugTracker.Controllers
             List<TicketData> TicketChartList = new List<TicketData>();
 
   
-            //so it is in the same controller 
-            // ..  i was trying to get ticket data per day - monday, tuesday wednesday, etc
-
-            //and find the number of tickets submitted that day and what their status was.  
-
-            //so like monday, 2 urgent tickets, 3 normal tickets, etc
-            //tuesday, 1 urgent ticket, 5 normal tickets, etc
-            //is that making sense? yeah that looks good
-            //the only problem is that i had to hard code the values...lol so they are basically made up
-            //see?  // I know this is not good but I could not figure date/time out where it would let me subtract back to the previous monday...which may be more complicated that what you want to do.. i don know
-            //ideally the chart would always display the previous 5 days mon-fri ticket submissions
-            //okay in that case you can check the day of week is completed with entire 5 days only then you can replace the data entirely so if mon through fri entirely exist you can replace the data for mon-fri basically wiping out the previous data and replace with new data
-            //do you understand?
-            //i do.  and that wouldd be find because none of thiis needs to persist it is just for display on the chart
-            //yes so let me see how you would do  better?
-            //hmm I am not sure I know the best logic  
-
-            //better?yep try it
-            //ok?
+    
             TicketData TicketData1 = new TicketData();
 
             var dateago = DateTime.Now.Date.AddDays(-7).ToString("d");
@@ -53,8 +35,6 @@ namespace BugTracker.Controllers
             var dateago5 = DateTime.Now.Date.AddDays(-3).ToString("d");
             var dateago6 = DateTime.Now.Date.AddDays(-2).ToString("d");
             var dateago7 = DateTime.Now.Date.AddDays(-1).ToString("d");
-            //right?yes
-            //
             var tickets = new List<Ticket>();
             foreach(var ticket in db.Tickets)
             {
@@ -63,33 +43,8 @@ namespace BugTracker.Controllers
                     tickets.Add(ticket);
                 }
             }
-            //now go ahead and replace all linq with the foreach
-           /* var tickets = db.Tickets.Where(t => t.CreatedDate.ToString("d") == dateago);*/ // replace rest of them
-          /*  var ticketscount = tickets.Count();*/ //what is this for?  // not sure - that may have been from the second time i re wrote it
-          //ok now you need if statement? do you mean if the day is saturday or sunday dont show? so if any of those days are not matching it will throw null exception
-          //so you don't have any tickets created within the timeframe  // no i am glad you checked that!  but i think it might work otherwise... ? yeah
-            TicketData1.DayofWeek = DateTime.Now.Date.AddDays(-7).DayOfWeek.ToString();  // Whatever today's date is minus seven I guess ?  Not sure here  I think select is my problem  
-            //Mark am i on the right track? I think the logic is good ok - as far as finding the day of the week that was 7 days ago.... aha.  ok so continue?  or do you need to go? continue ok
-            // not sure what would be null? never mind I thought of something else   so let's try it ok whew
-            //ok what do you think ok let's try ok go ahead and replace make sure you use the var instead of using the adddays method directly in the linq
-        //ok so then i need to make a few more>.....
-            //good?  ok?sure
-
-            //success? did you complete everything else?
-            //I think so.  everytime I check it I find something else.  I was just walking through it this evening for a final time but this is very minor you r demo login containers are kind of out of lines for the bottom lines
-            //i noticed that.  it is stretching them differently depending on which monitor im using - so I think i will go through one time with it published on my regular computer screen not the extra..  the large screen everything 
-            //looks fine but then looks off on smaller screen looks great  thansk it has been a ton of work.  I tried to just do it my own way verus what other people had done... im sure it could be better but learned a lot!
-
-            //Tahnks for helping with this this evening and sorry took so long. it's alright glad that it works. also for your dashboard any of the elements that doesn't do anything for your actual app it's better taking them out such as notification lighting onthe right upper side and search and also the on/off switch icon
-            // ok got it- i left some things in hoping to make them work...  but need to take them out
-            //will work on more in the morning and hopefully im not first but if i am, i'll try to be prepared okay
-            //cool thanks again!  I'm going to update the dates in the database to make that chart populate with data.  
-
-            //see you in the AM see you
-            //looks like you cannot use datetime methods in linq 
-            // ok well ...tried
-           // but I think  you are very close you can do a lot of things manually without using linq
-            //well it went trhough but i have created tickets this week...they shouldnt all be yes it should be zeros because you don't have anything that you created exactly at 12:00.ohhhhhh
+          
+            TicketData1.DayofWeek = DateTime.Now.Date.AddDays(-7).DayOfWeek.ToString(); 
             if(tickets.Count() != 0)
             {
                 TicketData1.StatusA = tickets.Where(t => t.TicketPriority.Name == "Urgent").Count();
@@ -113,10 +68,7 @@ namespace BugTracker.Controllers
                     tickets2.Add(ticket);
                 }
             }
-            //somewhere in here right... not sure what to get rid of
-
-            //var tickets2 = db.Tickets.Where(t => t.CreatedDate.ToString("d") == dateago2);
-            //var ticketscount2 = tickets.Count();
+       
             TicketData TicketData3 = new TicketData();
             TicketData3.DayofWeek = DateTime.Now.Date.AddDays(-6).DayOfWeek.ToString();
                   if (tickets2.Count() != 0)
@@ -142,8 +94,7 @@ namespace BugTracker.Controllers
                     tickets3.Add(ticket);
                 }
             }
-            //var tickets3 = db.Tickets.Where(t => t.CreatedDate.Date.ToString("d") == dateago3);
-            //var ticketscount3 = tickets.Count();
+      
             TicketData TicketData4 = new TicketData();
             TicketData4.DayofWeek = DateTime.Now.Date.AddDays(-5).DayOfWeek.ToString();
 
@@ -171,8 +122,7 @@ namespace BugTracker.Controllers
                     tickets4.Add(ticket);
                 }
             }
-            //var tickets4 = db.Tickets.Where(t => t.CreatedDate.Date.ToString("d") == dateago4);
-            //var ticketscount4 = tickets.Count();
+   
 
             TicketData TicketData5 = new TicketData();
             TicketData5.DayofWeek = DateTime.Now.Date.AddDays(-4).DayOfWeek.ToString();
@@ -200,8 +150,7 @@ namespace BugTracker.Controllers
                     tickets5.Add(ticket);
                 }
             }
-            //var tickets5 = db.Tickets.Where(t => t.CreatedDate.Date.ToString("d") == dateago5);
-            //var ticketscount5 = tickets.Count();
+     
             TicketData TicketData6 = new TicketData();
             TicketData6.DayofWeek = DateTime.Now.Date.AddDays(-3).DayOfWeek.ToString();
             if (tickets5.Count() != 0)
@@ -229,8 +178,7 @@ namespace BugTracker.Controllers
                     tickets6.Add(ticket);
                 }
             }
-            //var tickets6 = db.Tickets.Where(t => t.CreatedDate.Date.ToString("d") == dateago6);
-            //var ticketscount6 = tickets.Count();
+    
             TicketData TicketData7 = new TicketData();
             TicketData7.DayofWeek = DateTime.Now.Date.AddDays(-2).DayOfWeek.ToString();
             if (tickets6.Count() != 0)
@@ -260,8 +208,7 @@ namespace BugTracker.Controllers
                     tickets7.Add(ticket);
                 }
             }
-            //var tickets7 = db.Tickets.Where(t => t.CreatedDate.Date.ToString("d") == dateago7);
-            //var ticketscount7 = tickets.Count();
+       
             TicketData TicketData8 = new TicketData();
             TicketData8.DayofWeek = DateTime.Now.Date.AddDays(-1).DayOfWeek.ToString();
             if(tickets7.Count() !=0)
@@ -280,37 +227,7 @@ namespace BugTracker.Controllers
                 TicketData8.StatusC = 0;
                 TicketChartList.Add(TicketData8);
             }
-            //This is the controller that I was having the issue with
-            //List<UserData> UserChartList = new List<UserData>();
-            //UserRolesHelper UH = new UserRolesHelper(db);
-
-
-            //UserData User1 = new UserData();
-
-
-            //var Admins = UH.UsersInRole("Admin").Count();
-            //User1.Administrators = UH.UsersInRole("Admin").Count();
-            ////User1.Developers = Developer1 + Developer2 + Developer3 + Developer4;
-            ////User1.ProjectManagers = PM1 + PM2 + PM3;
-            ////User1.Submitters = submitters; 
-            ////User1.TotalUsers = db.Users.Count();
-            //UserChartList.Add(User1);
-
-
-            //UserData User2 = new UserData();
-
-            //var Developer1 = UH.UsersInRole("Developer1").Count();
-            //var Developer2 = UH.UsersInRole("Developer2").Count();
-            //var Developer3 = UH.UsersInRole("Developer3").Count();
-            //var Developer4 = UH.UsersInRole("Developer4").Count();
-            //User2.Developers = Developer1 + Developer2 + Developer3 + Developer4;
-            //UserChartList.Add(User2);
-
-            //var PM1 = UH.UsersInRole("Project Manager1").Count();
-            //var PM2 = UH.UsersInRole("Project Manager2").Count();
-            //var PM3 = UH.UsersInRole("Project Manager3").Count();
-
-            //var submitters = UH.UsersInRole("Submitter").Count();
+      
 
             List<UserData2> UserChartList = new List<UserData2>();
             UserRolesHelper UH = new UserRolesHelper(db);
@@ -326,9 +243,7 @@ namespace BugTracker.Controllers
             var DevCount2 = UH.UsersInRole("Developer2").Count();
             var DevCount3 = UH.UsersInRole("Developer3").Count();
             var DevCount4 = UH.UsersInRole("Developer4").Count();
-            //could you put the break point and see the data which you r sending t
-        // i did do that - so the second snippet that I sent you was showing how it comes through to the view page - the data comes through but then does not populate a graph
-        //the data comes through i
+         
             User2.label = "Developers";
             User2.value = DevCount1 + DevCount2 + DevCount3 + DevCount4;
             UserChartList.Add(User2);
@@ -352,48 +267,7 @@ namespace BugTracker.Controllers
 
 
 
-            //will let you drive
-            //ok
-
-            //this is where i had tried some things before...
-
-            //I was going to have the chart just constantly update based on today minus 7 days, minus 6, 5, 4, 3....and i guess it would keep changing because todays date will keep changing
-            //TicketData1.TicketCount = db.Tickets.Where(t=>t.CreatedDate == DateTime.Now.Date.AddDays(-7));)
-              //does this look logical? yes this will bring the entire count of tickets created 7 days ago //ok and then would i be able to 
-            //repeat code from above to find out the different statuses among those tickets...low, urgent, etc? sure
-
-            //try it now? yeah ok
-
-            //var ticket = db.Tickets.Where(t => t.CreatedDate == DateTime.Now.Date.AddDays(-7));
-            //var urgentcount = ticket.Where(t => t.TicketPriority.Name == "Urgent").Count();
-            //var normalcount = ticket.Where(t => t.TicketPriority.Name == "Normal").Count();
-            //var lowcount = ticket.Where(t => t.TicketPriority.Name == "Low").Count();
-            //TicketData1.Day = DateTime.Now.Date.AddDays(-7);  // so like here you have -7.  then could you have the next one be -6..   etc?  so what was the problem?  well in this
-            // examply when i try i have issue with converting because of the date/time type..  i think.  it wouldnt compile properly
-            //TicketData1.StatusA = urgentcount;
-            //TicketData1.StatusB = normalcount;
-            //TicketData1.StatusC = lowcount;
-            //TicketChartList.Add(TicketData1);
-
-            //TicketData1.Day = ;
-
-            //ChartData SampleData2 = new ChartData();
-            //SampleData2.Year = "2003";
-            //SampleData2.Income = 80000;
-            //SampleData2.Expense = 20000;
-            //ExerciseChartList.Add(SampleData2);
-
-            //ChartData SampleData3 = new ChartData();
-            //SampleData3.Year = "2004";
-            //SampleData3.Income = 70000;
-            //SampleData3.Expense = 30000;
-            //ExerciseChartList.Add(SampleData3);
-
-            //ChartData SampleData4 = new ChartData();
-            //SampleData4.Year = "2005";
-            //SampleData4.Income = 60000;
-            //SampleData4.Expense = 40000;
-            //ExerciseChartList.Add(SampleData4);
+        
             ViewBag.ArrData2 = UserChartList.ToArray();
             ViewBag.ArrData = TicketChartList.ToArray();
 
@@ -407,7 +281,7 @@ namespace BugTracker.Controllers
             var userroleSubmitter = helper.IsUserInRole(userId, "Submitter");
             List<Project> DeveloperProjects = new List<Project>();
             List<ApplicationUser> Developers = helper.UsersInRole("Developer1").Concat(helper.UsersInRole("Developer2")).Concat(helper.UsersInRole("Developer3")).Concat(helper.UsersInRole("Developer4")).ToList();
-            //var projects = db.Projects.Include(p => p.Users).ToList();
+          
 
 
 
@@ -592,7 +466,7 @@ namespace BugTracker.Controllers
                 var userroleSubmitter = helper.IsUserInRole(userId, "Submitter");
                 List<Project> DeveloperProjects = new List<Project>();
                 List<ApplicationUser> Developers = helper.UsersInRole("Developer1").Concat(helper.UsersInRole("Developer2")).Concat(helper.UsersInRole("Developer3")).Concat(helper.UsersInRole("Developer4")).ToList();
-                //var projects = db.Projects.Include(p => p.Users).ToList();
+               
 
 
                 List<Project> userprojects = new List<Project>();
@@ -687,22 +561,6 @@ namespace BugTracker.Controllers
 
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 return PartialView("~/Views/Shared/_LayoutPartial.cshtml", vm);
             }
 
@@ -732,11 +590,7 @@ namespace BugTracker.Controllers
             {
                 vm.Projectsb = ph.ListProjectsForAUser(userId);
             }
-            
-            
-          
-
-        
+   
             return PartialView("~/Views/Projects/_SidebarPartial2.cshtml", vm);
         }
             return RedirectToAction("Index", "Home");
